@@ -8,7 +8,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         String path;
-        int count =0;
+        int count=0;
+        Statistics statistics = new Statistics();
         while (true) {
             System.out.println("Введите путь к файлу и нажмите <Enter>:");
             path = new Scanner(System.in).nextLine();
@@ -26,27 +27,30 @@ public class Main {
 
                     String line;
 
+
                     while ((line = reader.readLine()) != null) {
                         int length = line.length();
 
                         if (length > 1024) {
                             throw new RuntimeException("Длинна строки > 1024");
                         }
-                        LogEntry e = new LogEntry(line);
 
+                        LogEntry e = new LogEntry(line);
+                        statistics.addEntry(e);
 
                     }
-                    System.out.println("Total traffic: " + statistics.totalTraffic + " bytes");
-                    System.out.println("Min time: " + statistics.minTime);
-                    System.out.println("Max time: " + statistics.maxTime);
-                    System.out.println("Traffic rate: " + statistics.getTrafficRate() + " bytes per hour");
+
+                        System.out.println("Total traffic: " + statistics.totalTraffic + " bytes");
+                        System.out.println("Min time: " + statistics.minTime);
+                        System.out.println("Max time: " + statistics.maxTime);
+                        System.out.println("Traffic rate: " + statistics.getTrafficRate() + " bytes per hour");
                 } catch (FileNotFoundException e) {
                     System.out.println(e.fillInStackTrace());
                 } catch (IOException e) {
                     System.out.println(e.fillInStackTrace());
                 };
             } else {
-            System.out.println("Файл отсутствует или путь ведет к директории файла");}
+                System.out.println("Файл отсутствует или путь ведет к директории файла");}
 
         }
     }

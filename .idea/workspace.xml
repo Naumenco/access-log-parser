@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="485b905c-4d17-4093-b87a-3fe02bae7579" name="Changes" comment="Update code with HashMap UserAgents Statistics">
+    <list default="true" id="485b905c-4d17-4093-b87a-3fe02bae7579" name="Changes" comment="Update code with HashMap Browser and NoPages Statistics">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Statistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Statistics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UserAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserAgent.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +81,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675154144492</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Update code with HashMap Browser and NoPages Statistics">
+      <created>1675158323703</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1675158323703</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -100,6 +108,7 @@
     <MESSAGE value="Update code with Objects" />
     <MESSAGE value="Update code with allObjects" />
     <MESSAGE value="Update code with locale changing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update code with locale changing" />
+    <MESSAGE value="Update code with HashMap Browser and NoPages Statistics" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update code with HashMap Browser and NoPages Statistics" />
   </component>
 </project>

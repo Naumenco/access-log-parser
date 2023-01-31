@@ -47,8 +47,10 @@ public class Main {
                         System.out.println("Max time: " + statistics.maxTime);
                         System.out.println("Traffic rate: " + statistics.getTrafficRate() + " bytes per hour");
 
-                        //System.out.println(statistics.getNoPages());
-                    statistics.getBrowserStatistics().forEach((key, value) -> System.out.println(key + " доля " + value));
+                        System.out.println("Traffic users Rate / hour: " + statistics.getUserRate());
+                        System.out.println("Traffic users Error Rate / hour: " + statistics.getErrorsRate());
+                       // System.out.println("Traffic per user: " + statistics.getVisitRate();
+                    //statistics.getBrowserStatistics().forEach((key, value) -> System.out.println(key + " доля " + value));
 
                 } catch (FileNotFoundException e) {
                     System.out.println(e.fillInStackTrace());

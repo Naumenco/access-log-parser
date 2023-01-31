@@ -1,7 +1,10 @@
 public class UserAgent {
     final String operatingSystem;
     final String browser;
+    final boolean isReal;
+
     public UserAgent(String string) {
+        this.isReal = !string.toUpperCase().contains("BOT");
 
         if (string.equals("-") || string.equals("")) {
             browser = "";

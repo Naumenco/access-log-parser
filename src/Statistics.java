@@ -13,6 +13,8 @@ public class Statistics {
     final HashMap<String, Integer> osStat;
     final HashMap<String, Integer> browserStat;
     long totalTraffic = 0;
+    long totalVisits = 0;
+    long totalErrors = 0;
     LocalDateTime minTime = LocalDateTime.MAX;
     LocalDateTime maxTime = LocalDateTime.MIN;
 
@@ -30,6 +32,10 @@ public class Statistics {
 
         totalTraffic += entry.answerSize;
 
+        if (entry.userAgent.isReal) {
+            ++totalVisits;
+        }
+
         if (entry.date.isBefore(minTime)) {
             minTime = entry.date;
         }
@@ -37,10 +43,14 @@ public class Statistics {
             maxTime = entry.date;
         }
 
-        if (entry.answerCode.equals("200")) {
+        String code = entry.answerCode;
+        if (code.equals("200")) {
             okPages.add(entry.path);
-        } else if (entry.answerCode.equals("404")) {
-            notFoundPages.add(entry.path);
+        } else if (code.startsWith("4") || code.startsWith("5")) {
+            if (code.equals("404")) {
+                notFoundPages.add(entry.path);
+            }
+            ++totalErrors;
         }
 
         String os = entry.userAgent.operatingSystem;
@@ -57,11 +67,34 @@ public class Statistics {
         return (int)(totalTraffic / hours);
     }
 
+    public int getVisitRate() {
+        long hours = ChronoUnit.HOURS.between(minTime, maxTime);
+        if (hours == 0)
+            hours = 1;
+        return (int) (totalVisits / hours);
+    }
+
+    public int getErrorsRate() {
+        long hours = ChronoUnit.HOURS.between(minTime, maxTime);
+        if (hours == 0)
+            hours = 1;
+        return (int) (totalErrors / hours);
+    }
+
+    public int getUserRate() {
+        long users = Arrays.stream(entries)
+                .limit(lastEntryIndex)
+                .filter(entry -> entry.userAgent.isReal)
+                .map(entry -> entry.IPAddress)
+                .distinct()
+                .count();
+        if (users == 0)
+            return 0;
+        return (int) (totalVisits / users);
+    }
+
     public List<String> getOkPages() {
         return Arrays.asList(okPages.toArray(new String[0]));
-    }
-    public List<String> getNoPages() {
-        return Arrays.asList(notFoundPages.toArray(new String[0]));
     }
 
     private static HashMap<String, Double> getStatistics(HashMap<String, Integer> statMap) {

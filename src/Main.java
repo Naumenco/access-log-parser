@@ -3,6 +3,8 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.*;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
@@ -44,6 +46,10 @@ public class Main {
                         System.out.println("Min time: " + statistics.minTime);
                         System.out.println("Max time: " + statistics.maxTime);
                         System.out.println("Traffic rate: " + statistics.getTrafficRate() + " bytes per hour");
+
+                    //    System.out.println(Collections.singletonList(statistics.getPlatformStatistics()));
+                    statistics.getPlatformStatistics().forEach((key, value) -> System.out.println(key + " доля " + value));
+
                 } catch (FileNotFoundException e) {
                     System.out.println(e.fillInStackTrace());
                 } catch (IOException e) {
